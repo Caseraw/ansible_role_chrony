@@ -2,7 +2,7 @@
 - name: Ensure chrony is started
   service:
     name: chronyd
-    state: stared
+    state: started
   listen: start_chrony
 
 - name: Ensure chrony is restarted
