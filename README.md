@@ -21,7 +21,7 @@ Role Variables
 |---------------|------------------------|------|------------------|-------------|
 | role_chrony_chrony_dot_conf_parameters| N/A | *Dictionary* | *Default chrony configuration options* | A dictionary containing the native configuration of chorny. |
 | role_chrony_required_packages | N/A | *List* | *Package names* | A list of packages that need to be installed for chrony to work properly. |
-| role_chrony_time_zone | Europe/Amsterdam | *List* | *Package names* | A list of packages that need to be installed for chrony to work properly. |
+| role_chrony_time_zone | Europe/Amsterdam | *String* | *All ISO standard timezones* | The timezone to set. |
 
 Dependencies
 ------------
