@@ -1,4 +1,12 @@
 ---
+- name: Ensure ntpd is unarmed (will fail if ntpd service is absent)
+  systemd:
+    name: ntpd
+    state: stopped
+    enabled: False
+    masked: True
+  ignore_errors: True
+
 - name: Ensure chrony is installed
   yum:
     name: '{{ role_chrony_required_packages }}'
