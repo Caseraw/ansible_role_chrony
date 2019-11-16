@@ -1,0 +1,25 @@
+# {{ ansible_managed }}
+
+{% if role_chrony_chrony_dot_conf_parameters.server.pool is defined and role_chrony_chrony_dot_conf_parameters.server.pool|length %}{% for server in role_chrony_chrony_dot_conf_parameters.server.pool %}
+{{ server }}
+{% endfor %}{% endif %}
+
+{% if role_chrony_chrony_dot_conf_parameters.drift_file is defined and role_chrony_chrony_dot_conf_parameters.drift_file|length %}{{ role_chrony_chrony_dot_conf_parameters.drift_file }}{% endif %}
+
+{% if role_chrony_chrony_dot_conf_parameters.makestep is defined and role_chrony_chrony_dot_conf_parameters.makestep|length %}{{ role_chrony_chrony_dot_conf_parameters.makestep }}{% endif %}
+
+{% if role_chrony_chrony_dot_conf_parameters.rtcsync is defined and role_chrony_chrony_dot_conf_parameters.rtcsync|length %}{{ role_chrony_chrony_dot_conf_parameters.rtcsync }}{% endif %}
+
+{% if role_chrony_chrony_dot_conf_parameters.hwtimestamp is defined and role_chrony_chrony_dot_conf_parameters.hwtimestamp|length %}{{ role_chrony_chrony_dot_conf_parameters.hwtimestamp }}{% endif %}
+
+{% if role_chrony_chrony_dot_conf_parameters.minsources is defined and role_chrony_chrony_dot_conf_parameters.minsources|length %}{{ role_chrony_chrony_dot_conf_parameters.minsources }}{% endif %}
+
+{% if role_chrony_chrony_dot_conf_parameters.allow is defined and role_chrony_chrony_dot_conf_parameters.allow|length %}{{ role_chrony_chrony_dot_conf_parameters.allow }}{% endif %}
+
+{% if role_chrony_chrony_dot_conf_parameters.local is defined and role_chrony_chrony_dot_conf_parameters.local|length %}{{ role_chrony_chrony_dot_conf_parameters.local }}{% endif %}
+
+{% if role_chrony_chrony_dot_conf_parameters.keyfile is defined and role_chrony_chrony_dot_conf_parameters.keyfile|length %}{{ role_chrony_chrony_dot_conf_parameters.keyfile }}{% endif %}
+
+{% if role_chrony_chrony_dot_conf_parameters.logdir is defined and role_chrony_chrony_dot_conf_parameters.logdir|length %}{{ role_chrony_chrony_dot_conf_parameters.logdir }}{% endif %}
+
+{% if role_chrony_chrony_dot_conf_parameters.log is defined and role_chrony_chrony_dot_conf_parameters.log|length %}{{ role_chrony_chrony_dot_conf_parameters.log }}{% endif %}

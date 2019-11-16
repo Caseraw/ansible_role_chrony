@@ -1,0 +1,4 @@
+---
+### Software packages required for installing chrony.
+role_chrony_required_packages:
+  - chrony

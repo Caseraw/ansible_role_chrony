@@ -1,0 +1,8 @@
+---
+- name: Manage the installation and configuration of chrony for NTP
+  become: True
+  gather_facts: False
+  roles:
+   - role: chrony
+
+...
