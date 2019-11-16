@@ -1,6 +1,6 @@
 # {{ ansible_managed }}
 
-{% if role_chrony_chrony_dot_conf_parameters.server.pool is defined and role_chrony_chrony_dot_conf_parameters.server.pool|length %}{% for server in role_chrony_chrony_dot_conf_parameters.server.pool %}
+{% if role_chrony_chrony_dot_conf_parameters.server is defined and role_chrony_chrony_dot_conf_parameters.server|length %}{% for server in role_chrony_chrony_dot_conf_parameters.server %}
 {{ server }}
 {% endfor %}{% endif %}
 
@@ -15,6 +15,10 @@
 {% if role_chrony_chrony_dot_conf_parameters.minsources is defined and role_chrony_chrony_dot_conf_parameters.minsources|length %}{{ role_chrony_chrony_dot_conf_parameters.minsources }}{% endif %}
 
 {% if role_chrony_chrony_dot_conf_parameters.allow is defined and role_chrony_chrony_dot_conf_parameters.allow|length %}{{ role_chrony_chrony_dot_conf_parameters.allow }}{% endif %}
+
+{% if role_chrony_chrony_dot_conf_parameters.bindcmdaddress is defined and role_chrony_chrony_dot_conf_parameters.bindcmdaddress|length %}{% for source in role_chrony_chrony_dot_conf_parameters.bindcmdaddress %}
+{{ source }}
+{% endfor %}{% endif %}
 
 {% if role_chrony_chrony_dot_conf_parameters.local is defined and role_chrony_chrony_dot_conf_parameters.local|length %}{{ role_chrony_chrony_dot_conf_parameters.local }}{% endif %}
 
