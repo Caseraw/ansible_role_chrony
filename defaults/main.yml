@@ -4,10 +4,10 @@
 ## It is tied to the templates/chrony.conf.j2 template file.
 role_chrony_chrony_dot_conf_parameters:
   server:
-    - server 0.rhel.pool.ntp.org iburst
-    - server 1.rhel.pool.ntp.org iburst
-    - server 2.rhel.pool.ntp.org iburst
-    - server 3.rhel.pool.ntp.org iburst
+    - server 0.rhel.pool.ntp.org iburst minpoll 4 maxpoll 6 polltarget 16
+    - server 1.rhel.pool.ntp.org iburst minpoll 4 maxpoll 6 polltarget 16
+    - server 2.rhel.pool.ntp.org iburst minpoll 4 maxpoll 6 polltarget 16
+    - server 3.rhel.pool.ntp.org iburst minpoll 4 maxpoll 6 polltarget 16
   drift_file: driftfile /var/lib/chrony/drift
   makestep: makestep 1.0 3
   rtcsync: rtcsync
