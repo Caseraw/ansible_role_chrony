@@ -56,3 +56,14 @@ Sources
 -------
 
 - https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_the_chrony_suite
+- https://chrony.tuxfamily.org/faq.html
+
+Additional chrony documentation
+-------------------------------
+
+Chrony shell commands:
+```shell
+chronyc tracking
+chronyc sources
+chronyc sourcestats
+```
