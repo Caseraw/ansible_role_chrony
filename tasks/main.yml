@@ -1,11 +1,17 @@
 ---
+- name: Check if ntpd is installed
+  stat:
+    path: /usr/lib/systemd/system/ntpd.service
+  register: role_chrony_check_ntp_installed_service
+  changed_when: False
+
 - name: Ensure ntpd is unarmed (will fail if ntpd service is absent)
   systemd:
     name: ntpd
     state: stopped
     enabled: False
     masked: True
-  ignore_errors: True
+  when: role_chrony_check_ntp_installed_service.stat.exists
 
 - name: Ensure chrony is installed
   yum:
