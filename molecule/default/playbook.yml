@@ -1,0 +1,8 @@
+---
+- name: Manage the installation and configuration of chrony for NTP
+  hosts: all
+  become: True
+  roles:
+   - role: chrony
+
+...
