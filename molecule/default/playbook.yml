@@ -4,6 +4,6 @@
   become: True
   gather_facts: False
   roles:
-   - role: chrony
+   - role: caseraw.ansible_role_chrony
 
 ...
