@@ -13,7 +13,7 @@ role_chrony_chrony_dot_conf_parameters:
   rtcsync: rtcsync
   hwtimestamp: hwtimestamp *
   minsources: minsources 2
-  #allow: allow 192.168.0.0/16
+  # allow: allow 192.168.0.0/16
   bindcmdaddress:
     - 'bindcmdaddress 127.0.0.1'
     - 'bindcmdaddress ::1'

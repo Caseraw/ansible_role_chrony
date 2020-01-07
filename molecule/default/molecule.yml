@@ -25,7 +25,7 @@ lint:
 #     box: centos/7
 #     imemory: 1024
 #     cpus: 1
-#------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 
 ### Use Docker driver (only a single 'driver' with given 'platforms' is allowed)
 driver:
@@ -36,22 +36,22 @@ platforms:
     command: /usr/sbin/init
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: true
-    pre_build_image: true
-#------------------------------------------------------------------------------
+    privileged: True
+    pre_build_image: True
+# -----------------------------------------------------------------------------
 
 ### Use testinfra verifier with flake8 (only a single 'verifier' with given 'lint' is allowed)
 verifier:
   name: ansible
   lint:
     name: ansible-lint
-#------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 
 ### Use testinfra verifier with flake8 (only a single 'verifier' with given 'lint' is allowed)
 # verifier:
 #   name: testinfra
 #   lint:
 #     name: flake8
-#------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 
 ...
