@@ -22,6 +22,7 @@ Managing network time using **chrony**.
 - Ensure privileged permissions are set for the user executing this role to:
   - Install and uninstall.
   - Edit files provided by the package itself.
+  - Manage systemd services for `ntpd` and `chronyd`.
 - Ensure network traffic over 123/udp (port/protocol) is allowed.
   - Outbound for any servers providing NTP.
   - Inbound for any clients retrieving NTP.
