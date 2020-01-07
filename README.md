@@ -1,21 +1,18 @@
-Chronyd
-=========
+# Chronyd
 
 Managing network time using **chrony**.
 
-Requirements
-------------
+## Requirements
 
 - Ensure a package manager is available and configured with the correct package sources and repositories.
 - Ensure privileged permissions are set for the user executing this role to:
-    - Install and uninstall.
-    - Edit files provided by the package itself.
+  - Install and uninstall.
+  - Edit files provided by the package itself.
 - Ensure network traffic over 123/udp (port/protocol) is allowed.
-    - Outbound for any servers providing NTP.
-    - Inbound for any clients retrieving NTP.
+  - Outbound for any servers providing NTP.
+  - Inbound for any clients retrieving NTP.
 
-Role Variables
---------------
+## Role Variables
 
 | Variable name | Default value | Type | Options/Contents | Description |
 |---------------|------------------------|------|------------------|-------------|
@@ -23,13 +20,11 @@ Role Variables
 | role_chrony_required_packages | N/A | *List* | *Package names* | A list of packages that need to be installed for chrony to work properly. |
 | role_chrony_time_zone | Europe/Amsterdam | *String* | *All ISO standard timezones* | The timezone to set. |
 
-Dependencies
-------------
+## Dependencies
 
 N/A
 
-Example Playbook
-----------------
+## Example Playbook
 
 ```yaml
 ---
@@ -42,26 +37,23 @@ Example Playbook
 ...
 ```
 
-License
--------
+## License
 
 MIT / BSD
 
-Author Information
-------------------
+## Author Information
 
 Made and maintained by: Kasra Amirsarvari (https://www.linkedin.com/in/caseraw)
 
-Sources
--------
+## Sources
 
 - https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_the_chrony_suite
 - https://chrony.tuxfamily.org/faq.html
 
-Additional chrony documentation
--------------------------------
+## Additional chrony documentation
 
-Chrony shell commands:
+**Chrony shell commands:**
+
 ```shell
 chronyc tracking
 chronyc sources

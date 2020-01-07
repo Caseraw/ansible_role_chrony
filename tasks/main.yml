@@ -5,7 +5,7 @@
   register: role_chrony_check_ntp_installed_service
   changed_when: False
 
-- name: Ensure ntpd is unarmed (will fail if ntpd service is absent)
+- name: Ensure ntpd is unarmed
   systemd:
     name: ntpd
     state: stopped

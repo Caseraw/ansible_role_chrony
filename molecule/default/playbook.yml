@@ -1,7 +1,8 @@
 ---
-- name: Manage the installation and configuration of chrony for NTP
+- name: Converge
   hosts: all
   become: True
+  gather_facts: False
   roles:
    - role: chrony
 

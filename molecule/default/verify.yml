@@ -1,0 +1,34 @@
+---
+- name: Verify
+  hosts: all
+  become: True
+  gather_facts: False
+  tasks:
+    - name: 'Run command: [ chronyc tracking ] - part 1'
+      command: chronyc tracking
+      register: verify_command
+      changed_when: False
+
+    - name: 'Show output: [ chronyc tracking ] - part 2'
+      debug:
+        msg: "{{ verify_command.stdout.split('\n') }}"
+
+    - name: 'Run command: [ chronyc sources ] - part 1'
+      command: chronyc sources
+      register: verify_command
+      changed_when: False
+
+    - name: 'Show output: [ chronyc sources ] - part 2'
+      debug:
+        msg: "{{ verify_command.stdout.split('\n') }}"
+
+    - name: 'Run command: [ chronyc sourcestats ] - part 1'
+      command: chronyc sourcestats
+      register: verify_command
+      changed_when: False
+
+    - name: 'Show output: [ chronyc sourcestats ] - part 2'
+      debug:
+        msg: "{{ verify_command.stdout.split('\n') }}"
+
+...

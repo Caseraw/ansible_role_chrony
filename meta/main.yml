@@ -3,7 +3,7 @@ galaxy_info:
   author: Kasra Amirsarvari
   description: Manage the installation and configuration of chrony for NTP
   company: N/A
-  license: "license (BSD, MIT)"
+  license: license (BSD, MIT)
   min_ansible_version: 2.4
   platforms:
     - name: Fedora
