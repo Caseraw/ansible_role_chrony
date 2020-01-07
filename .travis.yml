@@ -1,0 +1,28 @@
+---
+dist: bionic
+
+language: python
+python:
+  - "2.7"
+
+services:
+  - docker
+
+install:
+  - docker build --rm -t local/ansible-molecule-centos:7 .
+  - docker images
+
+script:
+  - docker run -d --privileged=true -v /sys/fs/cgroup:/sys/fs/cgroup:ro local/ansible-molecule-centos:7
+  - docker run -it --privileged=true -v /sys/fs/cgroup:/sys/fs/cgroup:ro local/ansible-molecule-centos:7 /bin/bash -c 'uname -a'
+  - docker run -it --privileged=true -v /sys/fs/cgroup:/sys/fs/cgroup:ro local/ansible-molecule-centos:7 /bin/bash -c 'cat /etc/*release'
+  - docker run -it --privileged=true -v /sys/fs/cgroup:/sys/fs/cgroup:ro local/ansible-molecule-centos:7 /bin/bash -c 'sudo -l'
+  - docker run -it --privileged=true -v /sys/fs/cgroup:/sys/fs/cgroup:ro local/ansible-molecule-centos:7 /bin/bash -c 'python --version'
+  - docker ps -a
+
+after_success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker tag local/ansible-molecule-centos:7 caseraw/ansible-molecule-centos:7
+  - docker push $DOCKER_USERNAME/ansible-molecule-centos:7
+
+...
