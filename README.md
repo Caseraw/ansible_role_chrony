@@ -33,7 +33,7 @@ Managing network time with **Ansible** using **chrony**.
 
 | Variable name | Description |
 |---------------|-------------|
-| role_chrony_chrony_dot_conf_parameters | A dictionary containing the native configuration of chrony. |
+| role_chrony_chrony_dot_conf_parameters | A dictionary containing the chrony configuration. |
 | role_chrony_required_packages | A list of packages that need to be installed for chrony to work properly. |
 | role_chrony_time_zone | The timezone to set. |
 
