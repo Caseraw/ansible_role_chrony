@@ -1,6 +1,8 @@
 # 1. Chrony
 
-Managing network time using **chrony**.
+Managing network time with **Ansible** using **chrony**.
+
+[![Build Status](https://travis-ci.org/Caseraw/ansible_role_chrony.svg?branch=master)](https://travis-ci.org/Caseraw/ansible_role_chrony) ![Ansible Role](https://img.shields.io/ansible/role/d/44669) ![Ansible Quality](https://img.shields.io/ansible/quality/44669)
 
 <!-- TOC -->
 
