@@ -2,7 +2,7 @@
 
 Managing network time with **Ansible** using **chrony**.
 
-[![Build Status](https://travis-ci.org/Caseraw/ansible_role_chrony.svg?branch=master)](https://travis-ci.org/Caseraw/ansible_role_chrony) ![Ansible Role](https://img.shields.io/ansible/role/d/44669) ![Ansible Quality](https://img.shields.io/ansible/quality/44669)
+[![Build Status](https://travis-ci.org/Caseraw/ansible_role_chrony.svg?branch=master)](https://travis-ci.org/Caseraw/ansible_role_chrony) [<img src="https://img.shields.io/ansible/role/44669">](https://galaxy.ansible.com/caseraw/ansible_role_chrony) [<img src="https://img.shields.io/ansible/role/d/44669">](https://galaxy.ansible.com/caseraw/ansible_role_chrony) [<img src="https://img.shields.io/ansible/quality/44669">](https://galaxy.ansible.com/caseraw/ansible_role_chrony)
 
 <!-- TOC -->
 
