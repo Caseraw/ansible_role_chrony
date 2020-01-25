@@ -1,9 +1,21 @@
 ---
 language: python
 python:
-  - "3.7"
+  - 3.7
 services:
   - docker
+env:
+  global:
+    namespace="caseraw"
+  matrix:
+    - image="ansible-molecule-centos" tag="latest"
+    - image="ansible-molecule-centos" tag="8"
+    - image="ansible-molecule-centos" tag="7"
+    - image="ansible-molecule-fedora" tag="latest"
+    - image="ansible-molecule-fedora" tag="31"
+    - image="ansible-molecule-fedora" tag="30"
+    - image="ansible-molecule-fedora" tag="29"
+    - image="ansible-molecule-fedora" tag="28"
 install:
   - pip install --upgrade pip setuptools
   - pip install molecule docker
