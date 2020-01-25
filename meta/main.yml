@@ -12,10 +12,12 @@ galaxy_info:
         - 29
         - 30
         - 31
+        - latest
     - name: EL
       versions:
         - 7
         - 8
+        - latest
   galaxy_tags:
     - ntp
     - time
