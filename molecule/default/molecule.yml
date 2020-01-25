@@ -14,19 +14,6 @@ scenario:
   name: default
 lint:
   name: yamllint
-
-### Use Docker driver (only a single 'driver' with given 'platforms' is allowed)
-# driver:
-#   name: vagrant
-#   provider:
-#     name: libvirt
-# platforms:
-#   - name: chrony-test-centos-7
-#     box: centos/7
-#     imemory: 1024
-#     cpus: 1
-
-### Use Docker driver (only a single 'driver' with given 'platforms' is allowed)
 driver:
   name: docker
 platforms:
@@ -37,17 +24,9 @@ platforms:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: True
     pre_build_image: True
-
-### Use testinfra verifier with flake8 (only a single 'verifier' with given 'lint' is allowed)
 verifier:
   name: ansible
   lint:
     name: ansible-lint
-
-### Use testinfra verifier with flake8 (only a single 'verifier' with given 'lint' is allowed)
-# verifier:
-#   name: testinfra
-#   lint:
-#     name: flake8
 
 ...
