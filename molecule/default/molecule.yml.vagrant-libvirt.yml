@@ -1,0 +1,31 @@
+---
+dependency:
+  name: galaxy
+provisioner:
+  name: ansible
+  config_options:
+    defaults:
+      remote_tmp: /tmp
+  lint:
+    name: ansible-lint
+  playbooks:
+    converge: playbook.yml
+scenario:
+  name: default
+lint:
+  name: yamllint
+driver:
+  name: vagrant
+  provider:
+    name: libvirt
+platforms:
+  - name: chrony-test-centos-7
+    box: centos/7
+    imemory: 1024
+    cpus: 1
+verifier:
+  name: ansible
+  lint:
+    name: ansible-lint
+
+...
