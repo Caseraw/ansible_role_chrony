@@ -10,11 +10,12 @@ Managing network time with **Ansible** using **chrony**.
   - [1.1. Requirements](#11-requirements)
   - [1.2. Role Variables](#12-role-variables)
   - [1.3. Dependencies](#13-dependencies)
-  - [1.4. Example Playbook](#14-example-playbook)
-  - [1.5. Additional sources](#15-additional-sources)
-  - [1.6. Usefull shell commands](#16-usefull-shell-commands)
-  - [1.7. License](#17-license)
-  - [1.8. Author Information](#18-author-information)
+  - [1.4. Compatibility](#14-compatibility)
+  - [1.5. Example Playbook](#15-example-playbook)
+  - [1.6. Additional sources](#16-additional-sources)
+  - [1.7. Usefull shell commands](#17-usefull-shell-commands)
+  - [1.8. License](#18-license)
+  - [1.9. Author Information](#19-author-information)
 
 <!-- /TOC -->
 
@@ -41,7 +42,16 @@ Managing network time with **Ansible** using **chrony**.
 
 N/A
 
-## 1.4. Example Playbook
+## 1.4. Compatibility
+
+Compatible with the following list of operating systems:
+
+- CentOS 7
+- RHEL 7.x
+- CentOS 8
+- RHEL 8.x
+
+## 1.5. Example Playbook
 
 ```yaml
 ---
@@ -54,14 +64,14 @@ N/A
 ...
 ```
 
-## 1.5. Additional sources
+## 1.6. Additional sources
 
 The following links provide more information about **chrony** and it's usage.
 
 - <https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_the_chrony_suite>
 - <https://chrony.tuxfamily.org/faq.html>
 
-## 1.6. Usefull shell commands
+## 1.7. Usefull shell commands
 
 ```shell
 chronyc tracking
@@ -69,10 +79,10 @@ chronyc sources
 chronyc sourcestats
 ```
 
-## 1.7. License
+## 1.8. License
 
 MIT / BSD
 
-## 1.8. Author Information
+## 1.9. Author Information
 
 Made and maintained by: [Kasra Amirsarvari](https://www.linkedin.com/in/caseraw)
