@@ -3,9 +3,6 @@ dependency:
   name: galaxy
 provisioner:
   name: ansible
-  config_options:
-    defaults:
-      remote_tmp: /tmp
   lint:
     name: ansible-lint
   playbooks:
@@ -19,7 +16,7 @@ driver:
   provider:
     name: libvirt
 platforms:
-  - name: chrony-test-centos-7
+  - name: nsible_role_chrony-ansible-molecule-centos-7
     box: centos/7
     imemory: 1024
     cpus: 1
