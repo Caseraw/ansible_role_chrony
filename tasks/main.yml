@@ -11,13 +11,14 @@
     state: stopped
     enabled: False
     masked: True
+    daemon_reload: True
   when: role_chrony_check_ntp_installed_service.stat.exists
 
 - name: Ensure chrony is installed
-  yum:
+  package:
     name: '{{ role_chrony_required_packages }}'
     state: present
-  notify: start_chrony
+  notify: start_restart_chronyd
 
 - name: Deploy chrony configuration file
   template:
@@ -26,7 +27,7 @@
     owner: root
     group: root
     mode: '0644'
-  notify: restart_chrony
+  notify: start_restart_chronyd
 
 - name: Ensure timezone is set to {{ role_chrony_time_zone }}
   timezone:
