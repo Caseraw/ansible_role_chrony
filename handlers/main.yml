@@ -1,14 +1,11 @@
 ---
-- name: Ensure chrony is started
-  service:
-    name: chronyd
-    state: started
-  listen: start_chrony
-
-- name: Ensure chrony is restarted
+- name: Ensure chrony is started/restarted and enabled
   service:
     name: chronyd
     state: restarted
-  listen: restart_chrony
+    enabled: True
+    masked: False
+    daemon_reload: True
+  listen: start_restart_chronyd
 
 ...
