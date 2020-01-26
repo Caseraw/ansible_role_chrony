@@ -14,7 +14,6 @@ env:
     - image="ansible-molecule-fedora" tag="30" cmd="/usr/sbin/init"
     - image="ansible-molecule-fedora" tag="31" cmd="/usr/sbin/init"
     - image="ansible-molecule-fedora" tag="latest" cmd="/usr/sbin/init"
-    - image="ansible-molecule-debian" tag="latest" cmd="/sbin/init"
 cache: pip
 install:
   - pip install --upgrade pip setuptools
