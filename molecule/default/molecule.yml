@@ -3,87 +3,19 @@ dependency:
   name: galaxy
 provisioner:
   name: ansible
-  config_options:
-    defaults:
-      remote_tmp: /tmp
-      stdout_callback: yaml
-      bin_ansible_callbacks: True
   lint:
     name: ansible-lint
   playbooks:
     converge: playbook.yml
 scenario:
   name: default
-  test_sequence:
-    - lint
-    # - dependency
-    # - cleanup
-    - destroy
-    - syntax
-    - create
-    # - prepare
-    - converge
-    - idempotence
-    # - side_effect
-    - verify
-    # - cleanup
-    - destroy
 lint:
   name: yamllint
 driver:
   name: docker
 platforms:
-  - name: chrony-test-centos-7
-    image: caseraw/ansible-molecule-centos:7
-    command: /usr/sbin/init
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: True
-    pre_build_image: True
-  - name: ansible-molecule-centos-8
-    image: caseraw/ansible-molecule-centos:8
-    command: /usr/sbin/init
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: True
-    pre_build_image: True
-  - name: ansible-molecule-centos-latest
-    image: caseraw/ansible-molecule-centos:latest
-    command: /usr/sbin/init
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: True
-    pre_build_image: True
-  - name: ansible-molecule-fedora-28
-    image: caseraw/ansible-molecule-fedora:28
-    command: /usr/sbin/init
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: True
-    pre_build_image: True
-  - name: ansible-molecule-fedora-29
-    image: caseraw/ansible-molecule-fedora:29
-    command: /usr/sbin/init
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: True
-    pre_build_image: True
-  - name: ansible-molecule-fedora-30
-    image: caseraw/ansible-molecule-fedora:30
-    command: /usr/sbin/init
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: True
-    pre_build_image: True
-  - name: ansible-molecule-fedora-31
-    image: caseraw/ansible-molecule-fedora:31
-    command: /usr/sbin/init
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: True
-    pre_build_image: True
-  - name: ansible-molecule-fedora-latest
-    image: caseraw/ansible-molecule-fedora:latest
+  - name: "${role_name:-ansible_role_chrony}-${image:-ansible-molecule-centos}-${tag:-latest}"
+    image: "${namespace:-caseraw}/${image:-ansible-molecule-centos}:${tag:-latest}"
     command: /usr/sbin/init
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
