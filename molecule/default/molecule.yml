@@ -11,6 +11,8 @@ scenario:
   name: default
 lint:
   name: yamllint
+  options:
+    config-file: molecule/default/yamllint.yml
 driver:
   name: docker
 platforms:
