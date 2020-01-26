@@ -6,14 +6,15 @@ env:
     - namespace="caseraw"
     - role_name="ansible_role_chrony"
   matrix:
-    - image="ansible-molecule-centos" tag="7"
-    - image="ansible-molecule-centos" tag="8"
-    - image="ansible-molecule-centos" tag="latest"
-    - image="ansible-molecule-fedora" tag="28"
-    - image="ansible-molecule-fedora" tag="29"
-    - image="ansible-molecule-fedora" tag="30"
-    - image="ansible-molecule-fedora" tag="31"
-    - image="ansible-molecule-fedora" tag="latest"
+    - image="ansible-molecule-centos" tag="7" cmd="/usr/sbin/init"
+    - image="ansible-molecule-centos" tag="8" cmd="/usr/sbin/init"
+    - image="ansible-molecule-centos" tag="latest" cmd="/usr/sbin/init"
+    - image="ansible-molecule-fedora" tag="28" cmd="/usr/sbin/init"
+    - image="ansible-molecule-fedora" tag="29" cmd="/usr/sbin/init"
+    - image="ansible-molecule-fedora" tag="30" cmd="/usr/sbin/init"
+    - image="ansible-molecule-fedora" tag="31" cmd="/usr/sbin/init"
+    - image="ansible-molecule-fedora" tag="latest" cmd="/usr/sbin/init"
+    - image="ansible-molecule-debian" tag="latest" cmd="/sbin/init"
 cache: pip
 install:
   - pip install --upgrade pip setuptools
