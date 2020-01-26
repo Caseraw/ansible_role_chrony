@@ -16,7 +16,7 @@ driver:
 platforms:
   - name: "${role_name:-ansible_role_chrony}-${image:-ansible-molecule-centos}-${tag:-latest}"
     image: "${namespace:-caseraw}/${image:-ansible-molecule-centos}:${tag:-latest}"
-    command: /usr/sbin/init
+    command: "${cmd:-/usr/sbin/init}"
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: True
