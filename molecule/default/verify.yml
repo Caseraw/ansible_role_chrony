@@ -4,31 +4,64 @@
   become: True
   gather_facts: False
   tasks:
-    - name: 'Run command: [ chronyc tracking ] - part 1'
+    - name: Ensure ntpd is unarmed
+      stat:
+        path: /etc/systemd/system/multi-user.target.wants/ntpd.service
+      register: role_chrony_check_ntp_service_is_armed
+      failed_when: role_chrony_check_ntp_service_is_armed.stat.exists
+
+    - name: Ensure chrony is installed - Gather package facts - part 1
+      package_facts:
+        manager: auto
+
+    - name: Ensure chrony is installed - Check package install state - part 1
+      fail:
+        msg: "Package 'chrony' is not installed"
+      when: "'chrony' not in ansible_facts.packages"
+
+    - name: Ensure chrony service is enabled and running - Gather service facts - part 1
+      service_facts:
+
+    - name: Ensure chrony service is enabled and running - Check package install state - part 2
+      fail:
+        msg: "Service 'chronyd' is not running or enabled"
+      when: (ansible_facts.services["chronyd.service"].state == "stopped") or
+            (ansible_facts.services["chronyd.service"].state == "unknown") or
+            (ansible_facts.services["chronyd.service"].status == "disabled")
+
+    - name: Ensure chrony configuration file exists
+      file:
+        path: /etc/chrony.conf
+        owner: root
+        group: root
+        mode: '0644'
+      check_mode: True
+
+    - name: Run command - [ chronyc tracking ] - part 1
       command: chronyc tracking
-      register: verify_command
+      register: role_chrony_verify_command
       changed_when: False
 
-    - name: 'Show output: [ chronyc tracking ] - part 2'
+    - name: Show output - [ chronyc tracking ] - part 2
       debug:
-        msg: "{{ verify_command.stdout.split('\n') }}"
+        msg: "{{ role_chrony_verify_command.stdout.split('\n') }}"
 
-    - name: 'Run command: [ chronyc sources ] - part 1'
+    - name: Run command - [ chronyc sources ] - part 1
       command: chronyc sources
-      register: verify_command
+      register: role_chrony_verify_command
       changed_when: False
 
-    - name: 'Show output: [ chronyc sources ] - part 2'
+    - name: Show output - [ chronyc sources ] - part 2
       debug:
-        msg: "{{ verify_command.stdout.split('\n') }}"
+        msg: "{{ role_chrony_verify_command.stdout.split('\n') }}"
 
-    - name: 'Run command: [ chronyc sourcestats ] - part 1'
+    - name: Run command - [ chronyc sourcestats ] - part 1
       command: chronyc sourcestats
-      register: verify_command
+      register: role_chrony_verify_command
       changed_when: False
 
-    - name: 'Show output: [ chronyc sourcestats ] - part 2'
+    - name: Show output - [ chronyc sourcestats ] - part 2
       debug:
-        msg: "{{ verify_command.stdout.split('\n') }}"
+        msg: "{{ role_chrony_verify_command.stdout.split('\n') }}"
 
 ...
