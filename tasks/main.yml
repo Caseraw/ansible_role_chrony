@@ -1,18 +1,21 @@
 ---
-- name: Check if ntpd is installed
-  stat:
-    path: /usr/lib/systemd/system/ntpd.service
-  register: role_chrony_check_ntp_installed_service
-  changed_when: False
+- name: Unarm ntp - Check if ntpd is installed - part 1
+  package_facts:
+    manager: auto
 
-- name: Ensure ntpd is unarmed
+- name: Unarm ntp - Ensure ntpd is stopped and disabled - part 2
   systemd:
     name: ntpd
     state: stopped
     enabled: False
-    masked: True
     daemon_reload: True
-  when: role_chrony_check_ntp_installed_service.stat.exists
+  when: "'ntp' in ansible_facts.packages"
+
+- name: Unarm ntp - Ensure ntpd is masked - part 3
+  systemd:
+    name: ntpd
+    masked: True
+  when: "'ntp' in ansible_facts.packages"
 
 - name: Ensure chrony is installed
   package:
@@ -27,6 +30,18 @@
     owner: root
     group: root
     mode: '0644'
+  notify: start_restart_chronyd
+
+- name: Ensure chrony service is enabled and running - part 1
+  service_facts:
+
+- name: Ensure chrony service is enabled and running - part 2
+  debug:
+    msg: "Service 'chronyd' is not running or enabled"
+  when: (ansible_facts.services["chronyd.service"].state == "stopped") or
+        (ansible_facts.services["chronyd.service"].state == "unknown") or
+        (ansible_facts.services["chronyd.service"].status == "disabled")
+  changed_when: True
   notify: start_restart_chronyd
 
 - name: Ensure timezone is set to {{ role_chrony_time_zone }}
