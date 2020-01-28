@@ -4,10 +4,6 @@
   become: True
   gather_facts: False
   tasks:
-    - name: Say hello Demo
-      debug:
-        msg: Hello demo message stuff
-
     - name: Ensure ntpd is unarmed
       stat:
         path: /etc/systemd/system/multi-user.target.wants/ntpd.service
