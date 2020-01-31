@@ -1,29 +1,12 @@
 # {{ ansible_managed }}
 
-{% if role_chrony_chrony_dot_conf_parameters.server is defined and role_chrony_chrony_dot_conf_parameters.server|length %}{% for server in role_chrony_chrony_dot_conf_parameters.server %}
-{{ server }}
-{% endfor %}{% endif %}
-
-{% if role_chrony_chrony_dot_conf_parameters.drift_file is defined and role_chrony_chrony_dot_conf_parameters.drift_file|length %}{{ role_chrony_chrony_dot_conf_parameters.drift_file }}{% endif %}
-
-{% if role_chrony_chrony_dot_conf_parameters.makestep is defined and role_chrony_chrony_dot_conf_parameters.makestep|length %}{{ role_chrony_chrony_dot_conf_parameters.makestep }}{% endif %}
-
-{% if role_chrony_chrony_dot_conf_parameters.rtcsync is defined and role_chrony_chrony_dot_conf_parameters.rtcsync|length %}{{ role_chrony_chrony_dot_conf_parameters.rtcsync }}{% endif %}
-
-{% if role_chrony_chrony_dot_conf_parameters.hwtimestamp is defined and role_chrony_chrony_dot_conf_parameters.hwtimestamp|length %}{{ role_chrony_chrony_dot_conf_parameters.hwtimestamp }}{% endif %}
-
-{% if role_chrony_chrony_dot_conf_parameters.minsources is defined and role_chrony_chrony_dot_conf_parameters.minsources|length %}{{ role_chrony_chrony_dot_conf_parameters.minsources }}{% endif %}
-
-{% if role_chrony_chrony_dot_conf_parameters.allow is defined and role_chrony_chrony_dot_conf_parameters.allow|length %}{{ role_chrony_chrony_dot_conf_parameters.allow }}{% endif %}
-
-{% if role_chrony_chrony_dot_conf_parameters.bindcmdaddress is defined and role_chrony_chrony_dot_conf_parameters.bindcmdaddress|length %}{% for source in role_chrony_chrony_dot_conf_parameters.bindcmdaddress %}
-{{ source }}
-{% endfor %}{% endif %}
-
-{% if role_chrony_chrony_dot_conf_parameters.local is defined and role_chrony_chrony_dot_conf_parameters.local|length %}{{ role_chrony_chrony_dot_conf_parameters.local }}{% endif %}
-
-{% if role_chrony_chrony_dot_conf_parameters.keyfile is defined and role_chrony_chrony_dot_conf_parameters.keyfile|length %}{{ role_chrony_chrony_dot_conf_parameters.keyfile }}{% endif %}
-
-{% if role_chrony_chrony_dot_conf_parameters.logdir is defined and role_chrony_chrony_dot_conf_parameters.logdir|length %}{{ role_chrony_chrony_dot_conf_parameters.logdir }}{% endif %}
-
-{% if role_chrony_chrony_dot_conf_parameters.log is defined and role_chrony_chrony_dot_conf_parameters.log|length %}{{ role_chrony_chrony_dot_conf_parameters.log }}{% endif %}
+{% set chrony_conf_vars = vars.keys() | select('match', '^role_chrony_chrony_dot_conf_parameters_.*$') %}
+{% for key in chrony_conf_vars %}
+{% if vars[key] is iterable and vars[key] is not string  %}
+{% for item in vars[key] %}
+{{ item }}
+{% endfor %}
+{% else %}
+{{ vars[key] }}
+{% endif %}
+{% endfor %}

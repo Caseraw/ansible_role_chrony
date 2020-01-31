@@ -1,29 +1,38 @@
 ---
 ### Setting up the /etc/chrony.conf file.
-## This dictionary contains a standard set of values that build up the configuration file.
-## It is tied to the templates/chrony.conf.j2 template file.
-role_chrony_chrony_dot_conf_parameters:
-  server:
-    - server 0.rhel.pool.ntp.org iburst minpoll 4 maxpoll 6 polltarget 16
-    - server 1.rhel.pool.ntp.org iburst minpoll 4 maxpoll 6 polltarget 16
-    - server 2.rhel.pool.ntp.org iburst minpoll 4 maxpoll 6 polltarget 16
-    - server 3.rhel.pool.ntp.org iburst minpoll 4 maxpoll 6 polltarget 16
-  drift_file: driftfile /var/lib/chrony/drift
-  makestep: makestep 1.0 3
-  rtcsync: rtcsync
-  hwtimestamp: hwtimestamp *
-  minsources: minsources 2
-  # allow: allow 192.168.0.0/16
-  bindcmdaddress:
-    - 'bindcmdaddress 127.0.0.1'
-    - 'bindcmdaddress ::1'
-  # local: local stratum 10
-  keyfile: keyfile /etc/chrony.keys
-  logdir: logdir /var/log/chrony
-  log: log measurements statistics tracking
+## These variables together build up the configuration file.
+## It is primarily tied to the templates/chrony.conf.j2 template file.
+##
+## Some parameters may contain free text values. No specific parsing of values
+## takes place due to the fact that if it would increase the complexity of the
+## Ansible role as will it's maintainability. It is strongly advised to consult
+## the official and latest documentation in order to prevent unintended
+## misconfiguration. Make sure to test your setup and verify a correct working
+## set. The given defaults are part of a minimal, stable and recommended set
+## of configuration parameters.
+##
+## Man pages:
+## Enterprise Linux, Fedora: man chrony.conf
+##
+## The list of these variables require a naming convention to enable a pattern.
+## The pattern is rendered as a list to iterate over once the configuration
+## template gets deployed on the desired target destination.
+
+role_chrony_chrony_dot_conf_parameters_server:
+  - server 0.rhel.pool.ntp.org iburst minpoll 4 maxpoll 6 polltarget 16
+  - server 1.rhel.pool.ntp.org iburst minpoll 4 maxpoll 6 polltarget 16
+  - server 2.rhel.pool.ntp.org iburst minpoll 4 maxpoll 6 polltarget 16
+  - server 3.rhel.pool.ntp.org iburst minpoll 4 maxpoll 6 polltarget 16
+role_chrony_chrony_dot_conf_parameters_makestep: makestep 1.0 3
+role_chrony_chrony_dot_conf_parameters_rtcsync: rtcsync
+role_chrony_chrony_dot_conf_parameters_hwtimestamp: hwtimestamp *
+role_chrony_chrony_dot_conf_parameters_minsources: minsources 2
+role_chrony_chrony_dot_conf_parameters_drift_file: driftfile /var/lib/chrony/drift
+role_chrony_chrony_dot_conf_parameters_keyfile: keyfile /etc/chrony.keys
+role_chrony_chrony_dot_conf_parameters_logdir: logdir /var/log/chrony
 
 ### Define the required timezone.
 ## Run the command 'timedatectl list-timezones' to see all available timezones.
-role_chrony_time_zone: 'Europe/Amsterdam'
+role_chrony_time_zone: Europe/Amsterdam
 
 ...
