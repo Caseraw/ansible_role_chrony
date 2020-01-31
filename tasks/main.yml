@@ -1,9 +1,9 @@
 ---
-- name: Unarm ntp - Check if ntpd is installed - part 1
+- name: Unarm ntp | part 1 | Gather package facts
   package_facts:
     manager: auto
 
-- name: Unarm ntp - Ensure ntpd is stopped and disabled - part 2
+- name: Unarm ntp | part 2 | Ensure ntpd is stopped and disabled
   systemd:
     name: ntpd
     state: stopped
@@ -11,11 +11,15 @@
     daemon_reload: True
   when: "'ntp' in ansible_facts.packages"
 
-- name: Unarm ntp - Ensure ntpd is masked - part 3
+- name: Unarm ntp | part 3 | Ensure ntpd is masked
   systemd:
     name: ntpd
     masked: True
   when: "'ntp' in ansible_facts.packages"
+
+- name: Ensure timezone is set to {{ role_chrony_time_zone }}
+  timezone:
+    name: '{{ role_chrony_time_zone }}'
 
 - name: Ensure chrony is installed
   package:
@@ -32,20 +36,16 @@
     mode: '0644'
   notify: start_restart_chronyd
 
-- name: Ensure chrony service is enabled and running - part 1
+- name: Arm chrony | part 1 | Gather service facts
   service_facts:
 
-- name: Ensure chrony service is enabled and running - part 2
+- name: Arm chrony | part 2 | Ensure chrony service is enabled and running
   debug:
-    msg: "Service 'chronyd' is not running or enabled"
-  when: (ansible_facts.services["chronyd.service"].state == "stopped") or
-        (ansible_facts.services["chronyd.service"].state == "unknown") or
-        (ansible_facts.services["chronyd.service"].status == "disabled")
+    msg: Try to start and enable 'chronyd' service if required
+  when:
+    - ansible_facts.services["chronyd.service"].state != "running"
+    - ansible_facts.services["chronyd.service"].status != "enabled"
   changed_when: True
   notify: start_restart_chronyd
-
-- name: Ensure timezone is set to {{ role_chrony_time_zone }}
-  timezone:
-    name: '{{ role_chrony_time_zone }}'
 
 ...
