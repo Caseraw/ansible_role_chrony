@@ -1,10 +1,10 @@
-# Chrony
+# Ansible role chrony
 
 Managing network time with **Ansible** using **chrony**.
 
 [![Build Status](https://travis-ci.org/Caseraw/ansible_role_chrony.svg?branch=master)](https://travis-ci.org/Caseraw/ansible_role_chrony) [<img src="https://img.shields.io/ansible/role/44669">](https://galaxy.ansible.com/caseraw/ansible_role_chrony) [<img src="https://img.shields.io/ansible/role/d/44669">](https://galaxy.ansible.com/caseraw/ansible_role_chrony) [<img src="https://img.shields.io/ansible/quality/44669">](https://galaxy.ansible.com/caseraw/ansible_role_chrony)
 
-- [Chrony](#chrony)
+- [Ansible role chrony](#ansible-role-chrony)
   - [License](#license)
   - [Author Information](#author-information)
   - [Requirements](#requirements)
@@ -13,7 +13,7 @@ Managing network time with **Ansible** using **chrony**.
   - [Role Variables](#role-variables)
   - [Example Playbook](#example-playbook)
   - [Useful shell commands](#useful-shell-commands)
-  - [Additional chrony documentation resources](#additional-chrony-documentation-resources)
+  - [Additional documentation resources](#additional-documentation-resources)
   - [Testing with Molecule](#testing-with-molecule)
   - [CI/CD with Travis CI](#cicd-with-travis-ci)
   - [Useful links](#useful-links)
@@ -68,7 +68,7 @@ Compatible with the following list of operating systems:
   become: True
   gather_facts: False
   roles:
-   - role: chrony
+   - role: ansible_role_chrony
 
 ...
 ```
@@ -81,7 +81,7 @@ chronyc sources
 chronyc sourcestats
 ```
 
-## Additional chrony documentation resources
+## Additional documentation resources
 
 The following links provide more information about **chrony** and it's usage.
 
