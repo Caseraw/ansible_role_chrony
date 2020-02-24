@@ -17,7 +17,7 @@ env:
 cache: pip
 install:
   - pip install --upgrade pip setuptools
-  - pip install molecule docker
+  - pip install molecule yamllint ansible-lint docker
 script:
   - python --version
   - ansible --version
