@@ -1,4 +1,8 @@
 ---
+### Software packages required for installing chrony.
+role_chrony_required_packages:
+  - chrony
+
 ### Setting up the /etc/chrony.conf file.
 ## These variables together build up the configuration file.
 ## It is primarily tied to the templates/chrony.conf.j2 template file.
